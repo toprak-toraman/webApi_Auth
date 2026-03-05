@@ -1,16 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using wepAPI_denemeler.Common.Enums;
 using wepAPI_denemeler.DTOs;
 using wepAPI_denemeler.Interfaces;
 
 namespace wepAPI_denemeler.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AuthController : ControllerBase
+    public class AuthController : BaseController<AuthController>
     {
         private readonly IAuthService _authService;
 
-        public AuthController(IAuthService authService)
+        public AuthController(ILogger<AuthController> logger, IAuthService authService) : base(logger)
         {
             _authService = authService;
         }
@@ -19,17 +18,25 @@ namespace wepAPI_denemeler.Controllers
         public async Task<IActionResult> Register(UserRegisterDto request)
         {
             var result = await _authService.RegisterAsync(request);
-            if (result == "UsernameTaken") return BadRequest("Kullanıcı adı alınmış.");
-            if (result == "EmailTaken") return BadRequest("Email zaten kayıtlı.");
-            return Ok("Başarıyla kaydedildi.");
+
+            return result switch
+            {
+                AuthResult.Success => Ok("Kayıt başarılı."),
+                AuthResult.UsernameTaken => BadRequest("Kullanıcı adı zaten var."),
+                AuthResult.EmailTaken => BadRequest("Email zaten kayıtlı."),
+                _ => BadRequest("Kayıt sırasında bir hata oluştu.")
+            };
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserLoginDto request)
         {
-            var token = await _authService.LoginAsync(request);
-            if (token == null) return BadRequest("Hatalı kullanıcı adı veya şifre.");
-            return Ok(new { Token = token });
+            var loginResult = await _authService.LoginAsync(request);
+
+            if (loginResult.Result != AuthResult.Success)
+                return BadRequest("Hatalı kullanıcı adı veya şifre.");
+
+            return Ok(new { Token = loginResult.Token });
         }
     }
 }

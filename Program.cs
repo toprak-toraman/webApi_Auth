@@ -1,26 +1,35 @@
+using Serilog; // Serilog eklendi
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using wepAPI_denemeler.Data;
-using wepAPI_denemeler.Interfaces; 
-using wepAPI_denemeler.Services;   
+using wepAPI_denemeler.Interfaces;
+using wepAPI_denemeler.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// 1. GEREKLÝ SERVÝSLER VE CONTROLLER
+// MADDE 4: SERILOG YAPILANDIRMASI (Dosyaya Log Yazma)
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day) // Günlük .txt dosyasý oluþturur
+    .CreateLogger();
+
+builder.Host.UseSerilog(); // Default logger yerine Serilog kullan
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// 2. DEPENDENCY INJECTION 
+// Dependency Injection
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 
-// 3. VERÝTABANI (PostgreSQL)
+// Veritabaný
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// 4. KÝMLÝK DOÐRULAMA (JWT)
+// JWT Ayarlarý
 var jwtSecret = builder.Configuration.GetSection("JwtSettings:Secret").Value;
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -36,7 +45,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 var app = builder.Build();
 
-//  MIDDLEWARE 
 app.UseSwagger();
 app.UseSwaggerUI();
 
