@@ -1,0 +1,74 @@
+2026-03-09 00:20:52.275 +03:00 [INF] User profile is available. Using 'C:\Users\lapto\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-03-09 00:20:53.075 +03:00 [INF] Now listening on: https://localhost:7105
+2026-03-09 00:20:53.083 +03:00 [INF] Now listening on: http://localhost:5005
+2026-03-09 00:20:53.632 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-09 00:20:53.636 +03:00 [INF] Hosting environment: Development
+2026-03-09 00:20:53.642 +03:00 [INF] Content root path: C:\Users\lapto\source\repos\wepAPI_denemeler\wepAPI_denemeler
+2026-03-09 00:20:54.588 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/ - null null
+2026-03-09 00:20:55.255 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/ - 404 0 null 702.7847ms
+2026-03-09 00:20:55.280 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7105/, Response status code: 404
+2026-03-09 00:21:11.277 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/swagger/index.html - null null
+2026-03-09 00:21:11.576 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/swagger/index.html - 304 null null 300.2419ms
+2026-03-09 00:21:11.725 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/swagger/swagger-ui.css - null null
+2026-03-09 00:21:11.729 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/swagger/swagger-ui-standalone-preset.js - null null
+2026-03-09 00:21:11.731 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/swagger/index.js - null null
+2026-03-09 00:21:11.725 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/swagger/swagger-ui-bundle.js - null null
+2026-03-09 00:21:11.789 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/swagger/index.js - 304 null null 58.8181ms
+2026-03-09 00:21:11.828 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/swagger/swagger-ui-standalone-preset.js - 304 null null 99.1638ms
+2026-03-09 00:21:11.728 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/_framework/aspnetcore-browser-refresh.js - null null
+2026-03-09 00:21:11.828 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/swagger/swagger-ui.css - 304 null null 103.2506ms
+2026-03-09 00:21:11.725 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/swagger/index.css - null null
+2026-03-09 00:21:11.812 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/_vs/browserLink - null null
+2026-03-09 00:21:11.854 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/swagger/swagger-ui-bundle.js - 304 null null 128.4699ms
+2026-03-09 00:21:11.952 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/swagger/index.css - 304 null null 226.373ms
+2026-03-09 00:21:11.954 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/_framework/aspnetcore-browser-refresh.js - 200 16517 application/javascript; charset=utf-8 225.3302ms
+2026-03-09 00:21:12.083 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/_vs/browserLink - 200 null text/javascript; charset=UTF-8 270.967ms
+2026-03-09 00:21:12.446 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/swagger/v1/swagger.json - null null
+2026-03-09 00:21:12.479 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 32.9913ms
+2026-03-09 00:21:21.607 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/api/User/users - null null
+2026-03-09 00:21:21.637 +03:00 [INF] Executing endpoint 'wepAPI_denemeler.Controllers.UserController.GetAllAsync (wepAPI_denemeler)'
+2026-03-09 00:21:21.712 +03:00 [INF] Route matched with {action = "GetAll", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[wepAPI_denemeler.Models.User]]] GetAllAsync() on controller wepAPI_denemeler.Controllers.UserController (wepAPI_denemeler).
+2026-03-09 00:21:21.750 +03:00 [INF] Executed action wepAPI_denemeler.Controllers.UserController.GetAllAsync (wepAPI_denemeler) in 14.4597ms
+2026-03-09 00:21:21.761 +03:00 [INF] Executed endpoint 'wepAPI_denemeler.Controllers.UserController.GetAllAsync (wepAPI_denemeler)'
+2026-03-09 00:21:21.775 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'wepAPI_denemeler.Interfaces.IBaseService`1[wepAPI_denemeler.Models.User]' while attempting to activate 'wepAPI_denemeler.Controllers.UserController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method9(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-03-09 00:21:21.880 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/api/User/users - 500 null text/plain; charset=utf-8 272.4609ms
+2026-03-09 00:22:00.371 +03:00 [INF] User profile is available. Using 'C:\Users\lapto\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-03-09 00:22:01.465 +03:00 [INF] Now listening on: https://localhost:7105
+2026-03-09 00:22:01.471 +03:00 [INF] Now listening on: http://localhost:5005
+2026-03-09 00:22:01.830 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-09 00:22:01.833 +03:00 [INF] Hosting environment: Development
+2026-03-09 00:22:01.864 +03:00 [INF] Content root path: C:\Users\lapto\source\repos\wepAPI_denemeler\wepAPI_denemeler
+2026-03-09 00:22:02.307 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/ - null null
+2026-03-09 00:22:02.439 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/_framework/aspnetcore-browser-refresh.js - null null
+2026-03-09 00:22:02.510 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/_framework/aspnetcore-browser-refresh.js - 200 16517 application/javascript; charset=utf-8 66.7852ms
+2026-03-09 00:22:02.801 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/ - 404 0 null 522.8785ms
+2026-03-09 00:22:02.816 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7105/, Response status code: 404
+2026-03-09 00:22:03.279 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/swagger/v1/swagger.json - null null
+2026-03-09 00:22:03.312 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 33.0314ms
+2026-03-09 00:22:13.302 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/api/User/users - null null
+2026-03-09 00:22:13.333 +03:00 [INF] Executing endpoint 'wepAPI_denemeler.Controllers.UserController.GetAllAsync (wepAPI_denemeler)'
+2026-03-09 00:22:13.410 +03:00 [INF] Route matched with {action = "GetAll", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[wepAPI_denemeler.Models.User]]] GetAllAsync() on controller wepAPI_denemeler.Controllers.UserController (wepAPI_denemeler).
+2026-03-09 00:22:15.054 +03:00 [INF] User listesi başarıyla getirildi.
+2026-03-09 00:22:18.067 +03:00 [INF] Executed DbCommand (85ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."PasswordHash", u."Username"
+FROM "Users" AS u
+2026-03-09 00:22:18.459 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[wepAPI_denemeler.Models.User, wepAPI_denemeler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-03-09 00:22:18.501 +03:00 [INF] Executed action wepAPI_denemeler.Controllers.UserController.GetAllAsync (wepAPI_denemeler) in 5070.5069ms
+2026-03-09 00:22:18.512 +03:00 [INF] Executed endpoint 'wepAPI_denemeler.Controllers.UserController.GetAllAsync (wepAPI_denemeler)'
+2026-03-09 00:22:18.548 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/api/User/users - 200 null application/json; charset=utf-8 5246.3804ms

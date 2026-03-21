@@ -7,5 +7,6 @@ namespace wepAPI_denemeler.Interfaces
     {
         Task<AuthResult> RegisterAsync(UserRegisterDto request);
         Task<(AuthResult Result, string? Token)> LoginAsync(UserLoginDto request);
+        Task<AuthResult> ChangePasswordAsync(int userId, string oldPassword, string newPassword);
     }
 }

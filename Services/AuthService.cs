@@ -41,5 +41,22 @@ namespace wepAPI_denemeler.Services
             var token = _tokenService.CreateToken(user);
             return (AuthResult.Success, token);
         }
+        public async Task<AuthResult> ChangePasswordAsync(int userId, string oldPassword, string newPassword)
+        {
+            var user = await _context.Users.FindAsync(userId);
+            if (user == null) return AuthResult.Failure; // Kullanıcı bulunamadıysa
+
+            // 1. Eski şifreyi doğrula
+            bool isOldCorrect = BCrypt.Net.BCrypt.Verify(oldPassword, user.PasswordHash);
+            if (!isOldCorrect) return AuthResult.InvalidPassword; // (Enum'a eklemelisin veya Failure dönmelisin)
+
+            // 2. Yeni şifreyi hash'le ve güncelle
+            user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(newPassword);
+
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+
+            return AuthResult.Success;
+        }
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using wepAPI_denemeler.Data;
@@ -11,9 +12,11 @@ using wepAPI_denemeler.Data;
 namespace wepAPI_denemeler.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260316124125_FixPostgresNamingConvention")]
+    partial class FixPostgresNamingConvention
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,7 +60,7 @@ namespace wepAPI_denemeler.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("favgames");
+                    b.ToTable("FavGames");
                 });
 
             modelBuilder.Entity("wepAPI_denemeler.Models.Game", b =>
@@ -89,7 +92,7 @@ namespace wepAPI_denemeler.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("games");
+                    b.ToTable("Games");
                 });
 
             modelBuilder.Entity("wepAPI_denemeler.Models.GameAd", b =>
@@ -135,7 +138,7 @@ namespace wepAPI_denemeler.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("gameads");
+                    b.ToTable("GameAds");
                 });
 
             modelBuilder.Entity("wepAPI_denemeler.Models.User", b =>
@@ -168,11 +171,11 @@ namespace wepAPI_denemeler.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
+                    b.Property<string>("Nickname")
                         .HasColumnType("text");
 
-                    b.Property<string>("Role")
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("UpdatedBy")
@@ -187,7 +190,7 @@ namespace wepAPI_denemeler.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("users");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("wepAPI_denemeler.Models.FavGame", b =>

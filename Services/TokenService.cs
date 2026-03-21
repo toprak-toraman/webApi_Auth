@@ -21,9 +21,13 @@ namespace wepAPI_denemeler.Services
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret!));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
+            // Roller burada ekleniyor
             var claims = new List<Claim> {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Username)
+                new Claim(ClaimTypes.Name, user.Username),
+                
+                // Program.cs içindeki RoleClaimType = "role" ayarıyla tam uyumlu:
+                new Claim("role", user.Role ?? "User")
             };
 
             var token = new JwtSecurityToken(

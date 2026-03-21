@@ -1,0 +1,100 @@
+2026-03-10 16:54:17.525 +03:00 [INF] User profile is available. Using 'C:\Users\lapto\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-03-10 16:54:18.499 +03:00 [INF] Now listening on: https://localhost:7105
+2026-03-10 16:54:18.505 +03:00 [INF] Now listening on: http://localhost:5005
+2026-03-10 16:54:18.942 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-10 16:54:18.948 +03:00 [INF] Hosting environment: Development
+2026-03-10 16:54:18.954 +03:00 [INF] Content root path: C:\Users\lapto\source\repos\wepAPI_denemeler\wepAPI_denemeler
+2026-03-10 16:54:19.786 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/ - null null
+2026-03-10 16:54:20.647 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/ - 404 0 null 902.4912ms
+2026-03-10 16:54:20.691 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7105/, Response status code: 404
+2026-03-10 17:12:23.907 +03:00 [INF] User profile is available. Using 'C:\Users\lapto\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-03-10 17:12:24.747 +03:00 [INF] Now listening on: https://localhost:7105
+2026-03-10 17:12:24.752 +03:00 [INF] Now listening on: http://localhost:5005
+2026-03-10 17:12:25.449 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-10 17:12:25.456 +03:00 [INF] Hosting environment: Development
+2026-03-10 17:12:25.464 +03:00 [INF] Content root path: C:\Users\lapto\source\repos\wepAPI_denemeler\wepAPI_denemeler
+2026-03-10 17:12:25.858 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/ - null null
+2026-03-10 17:12:26.614 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/ - 404 0 null 794.7657ms
+2026-03-10 17:12:26.662 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7105/, Response status code: 404
+2026-03-10 17:12:30.006 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/swagger/index.html - null null
+2026-03-10 17:12:30.203 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/swagger/index.html - 304 null null 196.6229ms
+2026-03-10 17:12:30.320 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/swagger/swagger-ui.css - null null
+2026-03-10 17:12:30.324 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/swagger/index.js - null null
+2026-03-10 17:12:30.323 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/swagger/swagger-ui-standalone-preset.js - null null
+2026-03-10 17:12:30.456 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/swagger/index.js - 304 null null 132.7386ms
+2026-03-10 17:12:30.323 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/swagger/swagger-ui-bundle.js - null null
+2026-03-10 17:12:30.323 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/swagger/index.css - null null
+2026-03-10 17:12:30.366 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/_framework/aspnetcore-browser-refresh.js - null null
+2026-03-10 17:12:30.440 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/_vs/browserLink - null null
+2026-03-10 17:12:30.527 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/swagger/swagger-ui.css - 304 null null 207.0382ms
+2026-03-10 17:12:30.527 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/swagger/swagger-ui-standalone-preset.js - 304 null null 203.3304ms
+2026-03-10 17:12:30.561 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/swagger/swagger-ui-bundle.js - 304 null null 238.3332ms
+2026-03-10 17:12:30.548 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/swagger/index.css - 304 null null 224.9842ms
+2026-03-10 17:12:30.585 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/_framework/aspnetcore-browser-refresh.js - 200 16517 application/javascript; charset=utf-8 219.3514ms
+2026-03-10 17:12:30.713 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/_vs/browserLink - 200 null text/javascript; charset=UTF-8 272.2617ms
+2026-03-10 17:12:30.905 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/swagger/v1/swagger.json - null null
+2026-03-10 17:12:30.938 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/swagger/favicon-32x32.png - null null
+2026-03-10 17:12:30.958 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/swagger/favicon-32x32.png - 304 null null 19.5878ms
+2026-03-10 17:12:30.977 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 72.5153ms
+2026-03-10 17:14:22.127 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7105/api/User - application/json 86
+2026-03-10 17:14:22.181 +03:00 [INF] Executing endpoint 'UserController.CreateAsync (wepAPI_denemeler)'
+2026-03-10 17:14:22.301 +03:00 [INF] Route matched with {action = "Create", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateAsync(wepAPI_denemeler.Models.User) on controller UserController (wepAPI_denemeler).
+2026-03-10 17:14:26.375 +03:00 [INF] Executed DbCommand (157ms) [Parameters=[@p0='?', @p1='?', @p2='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Users" ("Email", "PasswordHash", "Username")
+VALUES (@p0, @p1, @p2)
+RETURNING "Id";
+2026-03-10 17:14:26.483 +03:00 [INF] [BAŞARILI] Yeni User eklendi.
+2026-03-10 17:14:26.509 +03:00 [INF] Executing OkObjectResult, writing value of type 'wepAPI_denemeler.Models.User'.
+2026-03-10 17:14:26.536 +03:00 [INF] Executed action UserController.CreateAsync (wepAPI_denemeler) in 4213.1618ms
+2026-03-10 17:14:26.554 +03:00 [INF] Executed endpoint 'UserController.CreateAsync (wepAPI_denemeler)'
+2026-03-10 17:14:26.588 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7105/api/User - 200 null application/json; charset=utf-8 4461.829ms
+2026-03-10 17:15:03.282 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/api/User/users - null null
+2026-03-10 17:15:03.298 +03:00 [INF] Executing endpoint 'UserController.GetAllAsync (wepAPI_denemeler)'
+2026-03-10 17:15:03.317 +03:00 [INF] Route matched with {action = "GetAll", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[wepAPI_denemeler.Models.User]]] GetAllAsync() on controller UserController (wepAPI_denemeler).
+2026-03-10 17:15:03.375 +03:00 [INF] User listesi başarıyla getirildi.
+2026-03-10 17:15:04.024 +03:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."PasswordHash", u."Username"
+FROM "Users" AS u
+2026-03-10 17:15:04.065 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[wepAPI_denemeler.Models.User, wepAPI_denemeler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-03-10 17:15:04.075 +03:00 [INF] Executed action UserController.GetAllAsync (wepAPI_denemeler) in 752.6497ms
+2026-03-10 17:15:04.083 +03:00 [INF] Executed endpoint 'UserController.GetAllAsync (wepAPI_denemeler)'
+2026-03-10 17:15:04.090 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/api/User/users - 200 null application/json; charset=utf-8 808.4415ms
+2026-03-10 17:15:23.755 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/api/User/3 - null null
+2026-03-10 17:15:23.772 +03:00 [INF] Executing endpoint 'UserController.GetByIdAsync (wepAPI_denemeler)'
+2026-03-10 17:15:23.792 +03:00 [INF] Route matched with {action = "GetById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[wepAPI_denemeler.Models.User]] GetByIdAsync(Int32) on controller UserController (wepAPI_denemeler).
+2026-03-10 17:15:23.822 +03:00 [INF] User (ID: 3) bilgisi okundu.
+2026-03-10 17:15:24.121 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."PasswordHash", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__p_0
+LIMIT 1
+2026-03-10 17:15:24.137 +03:00 [INF] Executing OkObjectResult, writing value of type 'wepAPI_denemeler.Models.User'.
+2026-03-10 17:15:24.146 +03:00 [INF] Executed action UserController.GetByIdAsync (wepAPI_denemeler) in 340.1163ms
+2026-03-10 17:15:24.192 +03:00 [INF] Executed endpoint 'UserController.GetByIdAsync (wepAPI_denemeler)'
+2026-03-10 17:15:24.197 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/api/User/3 - 200 null application/json; charset=utf-8 441.1752ms
+2026-03-10 17:15:30.576 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/api/User/2 - null null
+2026-03-10 17:15:30.587 +03:00 [INF] Executing endpoint 'UserController.GetByIdAsync (wepAPI_denemeler)'
+2026-03-10 17:15:30.590 +03:00 [INF] Route matched with {action = "GetById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[wepAPI_denemeler.Models.User]] GetByIdAsync(Int32) on controller UserController (wepAPI_denemeler).
+2026-03-10 17:15:30.597 +03:00 [INF] User (ID: 2) bilgisi okundu.
+2026-03-10 17:15:30.616 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."PasswordHash", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__p_0
+LIMIT 1
+2026-03-10 17:15:30.631 +03:00 [INF] Executing OkObjectResult, writing value of type 'wepAPI_denemeler.Models.User'.
+2026-03-10 17:15:30.637 +03:00 [INF] Executed action UserController.GetByIdAsync (wepAPI_denemeler) in 41.3033ms
+2026-03-10 17:15:30.642 +03:00 [INF] Executed endpoint 'UserController.GetByIdAsync (wepAPI_denemeler)'
+2026-03-10 17:15:30.649 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/api/User/2 - 200 null application/json; charset=utf-8 71.9624ms
+2026-03-10 17:15:36.425 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7105/api/User/3 - null null
+2026-03-10 17:15:36.433 +03:00 [INF] Executing endpoint 'UserController.GetByIdAsync (wepAPI_denemeler)'
+2026-03-10 17:15:36.437 +03:00 [INF] Route matched with {action = "GetById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[wepAPI_denemeler.Models.User]] GetByIdAsync(Int32) on controller UserController (wepAPI_denemeler).
+2026-03-10 17:15:36.445 +03:00 [INF] User (ID: 3) bilgisi okundu.
+2026-03-10 17:15:36.453 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."PasswordHash", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__p_0
+LIMIT 1
+2026-03-10 17:15:36.462 +03:00 [INF] Executing OkObjectResult, writing value of type 'wepAPI_denemeler.Models.User'.
+2026-03-10 17:15:36.467 +03:00 [INF] Executed action UserController.GetByIdAsync (wepAPI_denemeler) in 23.1534ms
+2026-03-10 17:15:36.472 +03:00 [INF] Executed endpoint 'UserController.GetByIdAsync (wepAPI_denemeler)'
+2026-03-10 17:15:36.476 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7105/api/User/3 - 200 null application/json; charset=utf-8 50.4191ms

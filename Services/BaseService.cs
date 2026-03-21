@@ -15,7 +15,7 @@ namespace wepAPI_denemeler.Services
             _logger = logger;
         }
 
-        public async Task<List<T>> GetAllAsync()
+        public virtual async Task<List<T>> GetAllAsync()
         {
             _logger.LogInformation($"{typeof(T).Name} listesi başarıyla getirildi.");
             return await _context.Set<T>().ToListAsync();
@@ -24,8 +24,9 @@ namespace wepAPI_denemeler.Services
         public async Task<T?> GetByIdAsync(int id)
         {
             _logger.LogInformation($"{typeof(T).Name} (ID: {id}) bilgisi okundu.");
-            return await _context.Set<T>().FindAsync(id);
+            return await _context.Set<T>().FirstOrDefaultAsync(e => EF.Property<int>(e, "Id") == id);
         }
+
 
         public async Task<bool> AddAsync(T entity)
         {
@@ -47,9 +48,18 @@ namespace wepAPI_denemeler.Services
         {
             try
             {
+                // Reflection kullanarak entity içinde 'UpdatedDate' alanı var mı bakıyoruz
+                var updatedDateProp = typeof(T).GetProperty("UpdatedDate");
+                if (updatedDateProp != null)
+                {
+                    // Varsa, şu anki zamanı (UTC) içine yazıyoruz
+                    updatedDateProp.SetValue(entity, DateTime.UtcNow);
+                }
+
                 _context.Set<T>().Update(entity);
                 await _context.SaveChangesAsync();
-                _logger.LogInformation($"{typeof(T).Name} başarıyla güncellendi.");
+
+                _logger.LogInformation($"{typeof(T).Name} başarıyla güncellendi. (Tarih: {DateTime.UtcNow})");
                 return true;
             }
             catch (Exception ex)
