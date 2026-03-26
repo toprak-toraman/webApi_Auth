@@ -2,6 +2,7 @@
 using wepAPI_denemeler.Data;
 using wepAPI_denemeler.Interfaces;
 using wepAPI_denemeler.Models;
+using wepAPI_denemeler.DTOs; // QueryParams için bunu eklemelisin
 
 namespace wepAPI_denemeler.Services
 {
@@ -11,22 +12,33 @@ namespace wepAPI_denemeler.Services
         {
         }
 
-        // Genel Liste (Admin için her şeyi getirir)
-        public override async Task<List<GameAd>> GetAllAsync()
+        
+        public override async Task<List<GameAd>> GetAllAsync(QueryParams @params)
         {
-            return await _context.GameAds
+            _logger.LogInformation("İlanlar oyun ve kullanıcı bilgileriyle birlikte getiriliyor...");
+
+            // BaseService'deki o meşhur sorgu başlangıcını yapıyoruz
+            IQueryable<GameAd> query = _context.GameAds
                 .Include(x => x.Game)
-                .Include(x => x.User)
-                .ToListAsync();
+                .Include(x => x.User);
+
+
+
+            if (@params.IsPaginationEnabled)
+            {
+                int skip = (@params.PageNumber - 1) * @params.PageSize;
+                query = query.Skip(skip).Take(@params.PageSize);
+            }
+
+            return await query.ToListAsync();
         }
 
-        // --- YENİ EKLENEN FİLTRELER ---
-
+  
         public async Task<List<GameAd>> GetAdsByGameIdAsync(int gameId)
         {
             return await _context.GameAds
                 .Where(x => x.GameId == gameId)
-                .Include(x => x.User) // İlanı kimin verdiğini görsek yeter, oyun zaten belli
+                .Include(x => x.User)
                 .ToListAsync();
         }
 
@@ -34,7 +46,7 @@ namespace wepAPI_denemeler.Services
         {
             return await _context.GameAds
                 .Where(x => x.UserId == userId)
-                .Include(x => x.Game) // Hangi oyun için ilan vermiş, onu görmeliyiz
+                .Include(x => x.Game)
                 .ToListAsync();
         }
     }

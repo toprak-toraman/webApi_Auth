@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization; // Gerekli kütüphane
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using wepAPI_denemeler.DTOs;
 using wepAPI_denemeler.Interfaces;
@@ -8,7 +8,7 @@ namespace wepAPI_denemeler.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = "Admin")] // Bu satır tüm Controller'ı sadece Adminlere kilitler
+    [Authorize(Roles = "Admin")] // Sadece Admin girebilir
     public class UserController : BaseController<UserController>
     {
         private readonly IBaseService<User> _service;
@@ -23,13 +23,16 @@ namespace wepAPI_denemeler.Controllers
 
         // GET: api/user/users
         [HttpGet("users")]
-        public async Task<ActionResult<List<User>>> GetAllAsync()
+        
+        public async Task<ActionResult<List<User>>> GetAllAsync([FromQuery] QueryParams @params)
         {
-            var users = await _service.GetAllAsync();
+            // Parametreyi servise gönderiyoruz
+            var users = await _service.GetAllAsync(@params);
             return Ok(users);
         }
 
-        // GET: api/user/{id}
+       
+
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetByIdAsync(int id)
         {
@@ -40,12 +43,10 @@ namespace wepAPI_denemeler.Controllers
             return Ok(user);
         }
 
-        // POST: api/user
         [HttpPost]
         public async Task<IActionResult> CreateAsync([FromBody] UserRegisterDto dto)
         {
             var user = wepAPI_denemeler.Models.User.CreateFrom(dto);
-
             var result = await _service.AddAsync(user);
             if (!result)
                 return BadRequest("Kullanıcı eklenemedi.");
@@ -53,19 +54,16 @@ namespace wepAPI_denemeler.Controllers
             return Ok(user);
         }
 
-        // PUT: api/user/{id}
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateAsync(int id, [FromBody] UserUpdateDto dto)
         {
             var result = await _userService.UpdateUserAsync(id, dto);
-
             if (!result)
                 return NotFound("Kullanıcı bulunamadı veya güncellenemedi.");
 
             return NoContent();
         }
 
-        // DELETE: api/user/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {

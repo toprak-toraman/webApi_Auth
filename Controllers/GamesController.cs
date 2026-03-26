@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using wepAPI_denemeler.Interfaces;
 using wepAPI_denemeler.Models;
+using wepAPI_denemeler.DTOs; // QueryParams için bunu eklemeyi unutma!
 
 namespace wepAPI_denemeler.Controllers
 {
-   
     [ApiController]
     [Route("api/[controller]")]
     public class GamesController : BaseController<GamesController>
@@ -18,9 +18,10 @@ namespace wepAPI_denemeler.Controllers
 
         // GET: api/games
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] QueryParams @params) // [FromQuery] eklendi
         {
-            var games = await _gameService.GetAllAsync();
+            // Parametreyi servis metoduna gönderiyoruz
+            var games = await _gameService.GetAllAsync(@params);
             return Ok(games);
         }
 
