@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using wepAPI_denemeler.DTOs; // QueryParams için bunu eklemeyi unutma!
 using wepAPI_denemeler.Interfaces;
 using wepAPI_denemeler.Models;
-using wepAPI_denemeler.DTOs; // QueryParams için bunu eklemeyi unutma!
+using Microsoft.AspNetCore.Authorization;
 
 namespace wepAPI_denemeler.Controllers
 {
@@ -26,6 +27,7 @@ namespace wepAPI_denemeler.Controllers
         }
 
         // POST: api/games
+        [Authorize(Roles = "Admin")]// Sadece Admin rolündeki kullanıcılar ekleyebilir]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] string name)
         {

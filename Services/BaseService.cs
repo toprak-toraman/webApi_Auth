@@ -20,38 +20,52 @@ namespace wepAPI_denemeler.Services
         // --- GÜNCELLENEN METOT ---
         public virtual async Task<List<T>> GetAllAsync(QueryParams @params)
         {
-            _logger.LogInformation($"{typeof(T).Name} listesi filtreli/sayfalı getiriliyor.");
-
             IQueryable<T> query = _context.Set<T>();
 
-            // 1. FİLTRELEME (Reflection Kullanarak)
+            // --- 1. FİLTRELEME ---
             if (!string.IsNullOrEmpty(@params.FilterField) && !string.IsNullOrEmpty(@params.Keyword))
             {
-                // T (Entity) içindeki ilgili alanı buluyoruz
                 var prop = typeof(T).GetProperty(@params.FilterField, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
 
-                if (prop != null)
+               
+                if (prop == null)
+                    throw new ArgumentException($"Hata: '{typeof(T).Name}' tablosunda '{@params.FilterField}' isimli bir kolon bulunamadı.");
+
+                // Tip kontrolü yaparak filtreleme mantığını değiştiriyoruz
+                var type = prop.PropertyType;
+
+                if (type == typeof(string))
                 {
-                    // Bellekte değil, veritabanı sorgusunda filtrelemek için basit bir string araması
-                    
                     query = query.AsEnumerable()
                                  .Where(x => prop.GetValue(x, null)?.ToString()?
                                  .Contains(@params.Keyword, StringComparison.OrdinalIgnoreCase) ?? false)
                                  .AsQueryable();
                 }
-            }
-
-            // 2. SIRALAMA (Reflection Kullanarak)
-            if (!string.IsNullOrEmpty(@params.SortField))
-            {
-                var prop = typeof(T).GetProperty(@params.SortField, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
-                if (prop != null)
+                else if (type == typeof(int) || type == typeof(long))
                 {
-                    query = query.OrderBy(x => prop.GetValue(x, null));
+                    if (int.TryParse(@params.Keyword, out int intVal))
+                        query = query.Where(x => (int)prop.GetValue(x, null)! == intVal);
+                }
+                else if (type == typeof(DateTime))
+                {
+                    if (DateTime.TryParse(@params.Keyword, out DateTime dateVal))
+                        query = query.Where(x => (DateTime)prop.GetValue(x, null)! == dateVal.Date);
                 }
             }
 
-            // 3. SAYFALAMA (Pagination)
+            // --- 2. SIRALAMA ---
+            if (!string.IsNullOrEmpty(@params.SortField))
+            {
+                var prop = typeof(T).GetProperty(@params.SortField, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+
+              
+                if (prop == null)
+                    throw new ArgumentException($"Hata: Sıralama yapılmak istenen '{@params.SortField}' kolonu mevcut değil.");
+
+                query = query.OrderBy(x => prop.GetValue(x, null));
+            }
+
+            // --- 3. SAYFALAMA ---
             if (@params.IsPaginationEnabled)
             {
                 int skip = (@params.PageNumber - 1) * @params.PageSize;
@@ -60,6 +74,7 @@ namespace wepAPI_denemeler.Services
 
             return await query.ToListAsync();
         }
+        
 
       
 
