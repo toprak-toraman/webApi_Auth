@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 using wepAPI_denemeler.Common.Enums;
 using wepAPI_denemeler.DTOs;
+using wepAPI_denemeler.Extensions;
 using wepAPI_denemeler.Interfaces;
 
 namespace wepAPI_denemeler.Controllers
@@ -41,14 +41,13 @@ namespace wepAPI_denemeler.Controllers
             return Ok(new { Token = loginResult.Token });
         }
 
-        // --- YENİ EKLENEN ŞİFRE DEĞİŞTİRME ENDPOINT'İ ---
-        [Authorize] // Sadece giriş yapanlar (Token'ı olanlar)
+        [Authorize]
         [HttpPut("change-password")]
         public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDto request)
         {
-            // Token içinden giriş yapan kullanıcının ID'sini çekiyoruz
-            var userIdStr = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            if (!int.TryParse(userIdStr, out int userId)) return Unauthorized();
+            // BURASI DÜZELDİ: Uzun Parse işlemi yerine tek satır extension
+            var userId = User.GetUserId();
+            if (userId == 0) return Unauthorized();
 
             var result = await _authService.ChangePasswordAsync(userId, request.OldPassword, request.NewPassword);
 

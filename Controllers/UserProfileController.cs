@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 using wepAPI_denemeler.DTOs;
+using wepAPI_denemeler.Extensions;
 using wepAPI_denemeler.Interfaces;
 
 namespace wepAPI_denemeler.Controllers
@@ -22,10 +22,9 @@ namespace wepAPI_denemeler.Controllers
         [HttpPut("update-me")]
         public async Task<IActionResult> UpdateMe([FromBody] ProfileUpdateDto dto)
         {
-            // Token'dan ID çekiyoruz (Yine o güvenli yol)
-            var userIdStr = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-            if (string.IsNullOrEmpty(userIdStr) || !int.TryParse(userIdStr, out int userId))
-                return Unauthorized();
+
+            var userId = User.GetUserId();
+            if (userId == 0) return Unauthorized();
 
             var result = await _userProfileService.UpdateMyProfile(userId, dto);
 

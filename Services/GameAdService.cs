@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using wepAPI_denemeler.Data;
+using wepAPI_denemeler.DTOs; // QueryParams için bunu eklemelisin
 using wepAPI_denemeler.Interfaces;
 using wepAPI_denemeler.Models;
-using wepAPI_denemeler.DTOs; // QueryParams için bunu eklemelisin
 
 namespace wepAPI_denemeler.Services
 {
@@ -12,7 +12,7 @@ namespace wepAPI_denemeler.Services
         {
         }
 
-        
+
         public override async Task<List<GameAd>> GetAllAsync(QueryParams @params)
         {
             _logger.LogInformation("İlanlar oyun ve kullanıcı bilgileriyle birlikte getiriliyor...");
@@ -33,7 +33,7 @@ namespace wepAPI_denemeler.Services
             return await query.ToListAsync();
         }
 
-  
+
         public async Task<List<GameAd>> GetAdsByGameIdAsync(int gameId)
         {
             return await _context.GameAds

@@ -23,7 +23,7 @@ namespace wepAPI_denemeler.Controllers
 
         // GET: api/user/users
         [HttpGet("users")]
-        
+
         public async Task<ActionResult<List<User>>> GetAllAsync([FromQuery] QueryParams @params)
         {
             // Parametreyi servise gönderiyoruz
@@ -31,7 +31,7 @@ namespace wepAPI_denemeler.Controllers
             return Ok(users);
         }
 
-       
+
 
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetByIdAsync(int id)

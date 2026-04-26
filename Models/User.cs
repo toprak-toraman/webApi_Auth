@@ -9,7 +9,7 @@ namespace wepAPI_denemeler.Models
         public string PasswordHash { get; set; } = default!;
 
         // YENİ ALANLAR
-       
+
         public int? Age { get; set; }
         public string? Bio { get; set; }
         public string? Gender { get; set; }

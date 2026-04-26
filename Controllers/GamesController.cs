@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using wepAPI_denemeler.DTOs; // QueryParams için bunu eklemeyi unutma!
 using wepAPI_denemeler.Interfaces;
 using wepAPI_denemeler.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace wepAPI_denemeler.Controllers
 {

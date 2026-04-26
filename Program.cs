@@ -1,13 +1,12 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Serilog;
+using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using wepAPI_denemeler.Data;
 using wepAPI_denemeler.Interfaces;
 using wepAPI_denemeler.Models;
 using wepAPI_denemeler.Services;
-using System.IdentityModel.Tokens.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +15,7 @@ JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(); 
+builder.Services.AddSwaggerGen();
 
 // Dependency Injection
 builder.Services.AddScoped<IAuthService, AuthService>();
@@ -35,7 +34,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // JWT Ayarlarý
 var jwtSecret = builder.Configuration.GetSection("JwtSettings:Secret").Value;
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options => {
+    .AddJwtBearer(options =>
+    {
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuerSigningKey = true,
@@ -50,7 +50,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 var app = builder.Build();
 
 app.UseSwagger();
-app.UseSwaggerUI(c => {
+app.UseSwaggerUI(c =>
+{
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "V1");
     c.RoutePrefix = string.Empty;
 });

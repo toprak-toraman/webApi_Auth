@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using wepAPI_denemeler.Data;
-using wepAPI_denemeler.Interfaces;
 using wepAPI_denemeler.DTOs;
+using wepAPI_denemeler.Interfaces;
 
 namespace wepAPI_denemeler.Services
 {
@@ -17,7 +17,6 @@ namespace wepAPI_denemeler.Services
             _logger = logger;
         }
 
-        // --- GÜNCELLENEN METOT ---
         public virtual async Task<List<T>> GetAllAsync(QueryParams @params)
         {
             IQueryable<T> query = _context.Set<T>();
@@ -27,11 +26,9 @@ namespace wepAPI_denemeler.Services
             {
                 var prop = typeof(T).GetProperty(@params.FilterField, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
 
-               
                 if (prop == null)
                     throw new ArgumentException($"Hata: '{typeof(T).Name}' tablosunda '{@params.FilterField}' isimli bir kolon bulunamadı.");
 
-                // Tip kontrolü yaparak filtreleme mantığını değiştiriyoruz
                 var type = prop.PropertyType;
 
                 if (type == typeof(string))
@@ -58,7 +55,6 @@ namespace wepAPI_denemeler.Services
             {
                 var prop = typeof(T).GetProperty(@params.SortField, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
 
-              
                 if (prop == null)
                     throw new ArgumentException($"Hata: Sıralama yapılmak istenen '{@params.SortField}' kolonu mevcut değil.");
 
@@ -74,9 +70,6 @@ namespace wepAPI_denemeler.Services
 
             return await query.ToListAsync();
         }
-        
-
-      
 
         public async Task<T?> GetByIdAsync(int id)
         {

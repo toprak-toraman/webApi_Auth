@@ -2,7 +2,7 @@
 
 namespace wepAPI_denemeler.Controllers
 {
-    
+
     public abstract class BaseController<T> : ControllerBase
     {
         protected readonly ILogger<T> _logger;
